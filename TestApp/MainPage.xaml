@@ -1,0 +1,46 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="TestApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+    <Grid x:Name="LayoutRoot" Background="Transparent" Grid.Row="1">
+        <StackPanel Orientation="Vertical">
+            <Button Content="Button" Tap="Button_Tap"/>
+            <StackPanel>
+                <StackPanel.Resources>
+                    <DataTemplate x:Key="itemTemplate">
+                        <StackPanel Orientation="Vertical" Tap="StackPanel_Tap">
+                            <TextBlock Text="{Binding Element}" TextWrapping="NoWrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding Type}" TextWrapping="NoWrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                    <DataTemplate x:Key="groupHeaderTemplate">
+                        <Border Background="DarkGray" Height="72">
+                            <TextBlock Text="{Binding Key}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
+                        </Border>
+                    </DataTemplate>
+                    <DataTemplate x:Key="groupItemTemplate" >
+                        <Border Background="DarkGray" Width="240" Height="120" Margin="6">
+                            <TextBlock Text="{Binding Key}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
+                        </Border>
+                    </DataTemplate>
+                </StackPanel.Resources>
+                <toolkit:LongListSelector x:Name="Contacts" IsFlatList="False" ItemsSource="{Binding Items}"
+                                  ItemTemplate="{StaticResource itemTemplate}"
+                                  GroupHeaderTemplate="{StaticResource groupHeaderTemplate}"
+                                  GroupItemTemplate="{StaticResource groupItemTemplate}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</phone:PhoneApplicationPage>

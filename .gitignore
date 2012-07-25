@@ -1,0 +1,11 @@
+# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
+bin
+PivotApp2/Bin
+obj
+_ReSharper.PokerTools
+PivotApp2/Settings.StyleCop
+PivotApp2/StyleCop.Cache
+*.suo
+# mstest test results
+TestResults
+PokerTools.suo
